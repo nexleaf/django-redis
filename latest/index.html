@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
-<meta name="author" content="Andrey Antukh, &lt;niwi@niwi.be&gt;">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="Andrey Antukh, &amp;amp;lt;niwi@niwi.be&amp;amp;gt;">
 <title>django-redis documentation</title>
 <style>
 .listingblock .pygments .hll { background-color: #ffffcc }
@@ -85,8 +85,8 @@
 <div id="header">
 <h1>django-redis documentation</h1>
 <div class="details">
-<span id="author" class="author">Andrey Antukh, &lt;niwi@niwi.be&gt;</span><br>
-<span id="revdate">4.8.0</span>
+<span id="author" class="author">Andrey Antukh, &amp;amp;lt;niwi@niwi.be&amp;amp;gt;</span><br>
+<span id="revdate">4.9.0</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -193,7 +193,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Supported stable version: <strong>4.8.0</strong></p>
+<p>Supported stable version: <strong>4.9.0</strong></p>
 </li>
 <li>
 <p>Supported stable version: <strong>3.8.4</strong></p>
@@ -220,10 +220,7 @@ fix releases and are should contain only bug fixes. No new features.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>django-redis 3.8.x</strong> will maintain support for django 1.4, 1.5, 1.6, 1.7 (and maybe 1.8)</p>
-</li>
-<li>
-<p><strong>django-redis 4.4.x</strong> will maintain support for django 1.6, 1.7, 1.8, 1.9 and 1.10</p>
+<p><strong>django-redis</strong> supports Django 1.11+.</p>
 </li>
 </ul>
 </div>
@@ -260,7 +257,7 @@ fix releases and are should contain only bug fixes. No new features.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="text">pip install django-redis</code></pre>
+<pre class="pygments highlight"><code data-lang="text"><span></span>pip install django-redis</code></pre>
 </div>
 </div>
 </div>
@@ -271,7 +268,7 @@ fix releases and are should contain only bug fixes. No new features.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
@@ -330,7 +327,7 @@ convenience option in <code>OPTIONS</code> dict:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
@@ -355,7 +352,7 @@ have set the password in the uri, this settings will be ignored.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">SESSION_ENGINE</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;django.contrib.sessions.backends.cache&quot;</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">SESSION_ENGINE</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;django.contrib.sessions.backends.cache&quot;</span>
 <span class="tok-n">SESSION_CACHE_ALIAS</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;default&quot;</span></code></pre>
 </div>
 </div>
@@ -363,23 +360,11 @@ have set the password in the uri, this settings will be ignored.</p>
 <div class="sect2">
 <h3 id="_testing_with_django_redis">2.4. Testing with django-redis</h3>
 <div class="paragraph">
-<p><code>django-redis</code> supports customizing the underlying Redis client (see <a href="#_pluggable_redis_client">Pluggable redis client</a>).
-This can be used for testing purposes, e.g., by replacing the default client with <code>fakeredis</code>
-(<a href="https://github.com/jamesls/fakeredis" class="bare">https://github.com/jamesls/fakeredis</a>) or <code>mockredis</code> (<a href="https://github.com/locationlabs/mockredis" class="bare">https://github.com/locationlabs/mockredis</a>).
-Doing so allows you to run your integration tests without depending on a real Redis server.</p>
-</div>
-<div class="listingblock">
-<div class="title">Example setup using <code>fakeredis</code>:</div>
-<div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-kn">import</span> <span class="tok-nn">fakeredis</span>
-<span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
-    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
-        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
-            <span class="tok-s2">&quot;REDIS_CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;fakeredis.FakeStrictRedis&quot;</span><span class="tok-p">,</span>
-        <span class="tok-p">}</span>
-    <span class="tok-p">}</span>
-<span class="tok-p">}</span></code></pre>
-</div>
+<p><code>django-redis</code> supports customizing the underlying Redis client (see
+<a href="#_pluggable_redis_client">Pluggable redis client</a>). This can be used for testing purposes, e.g., by
+replacing the default client with <code>mockredis</code>
+(<a href="https://github.com/locationlabs/mockredis" class="bare">https://github.com/locationlabs/mockredis</a>). Doing so allows you to run your
+integration tests without depending on a real Redis server.</p>
 </div>
 <div class="paragraph">
 <p>In case you want to flush all data from the cache after a test, add the
@@ -387,7 +372,7 @@ following lines to your <code>TestCase</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">def</span> <span class="tok-nf">tearDown</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-k">def</span> <span class="tok-nf">tearDown</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
     <span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
     <span class="tok-n">get_redis_connection</span><span class="tok-p">(</span><span class="tok-s2">&quot;default&quot;</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">flushall</span><span class="tok-p">()</span></code></pre>
 </div>
@@ -409,7 +394,7 @@ can do it, using <code>PICKLE_VERSION</code> option:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-c1"># ...</span>
         <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
@@ -428,7 +413,7 @@ options:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-c1"># ...</span>
         <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
@@ -453,7 +438,7 @@ You can activate it setting up a concrete backend:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-c1"># ...</span>
         <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
@@ -468,13 +453,30 @@ You can activate it setting up a concrete backend:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-kn">import</span> <span class="tok-nn">lzma</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">import</span> <span class="tok-nn">lzma</span>
 
 <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-c1"># ...</span>
         <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
             <span class="tok-s2">&quot;COMPRESSOR&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.compressors.lzma.LzmaCompressor&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Lz4</strong> compression support (requires the lz4 library):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">import</span> <span class="tok-nn">lz4</span>
+
+<span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;COMPRESSOR&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.compressors.lz4.Lz4Compressor&quot;</span><span class="tok-p">,</span>
         <span class="tok-p">}</span>
     <span class="tok-p">}</span>
 <span class="tok-p">}</span></code></pre>
@@ -493,7 +495,7 @@ set <code>IGNORE_EXCEPTIONS</code> settings on your cache configuration:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-c1"># ...</span>
         <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
@@ -509,7 +511,7 @@ your settings:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">DJANGO_REDIS_IGNORE_EXCEPTIONS</span> <span class="tok-o">=</span> <span class="tok-bp">True</span></code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">DJANGO_REDIS_IGNORE_EXCEPTIONS</span> <span class="tok-o">=</span> <span class="tok-bp">True</span></code></pre>
 </div>
 </div>
 </div>
@@ -522,7 +524,7 @@ in your settings file.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS</span> <span class="tok-o">=</span> <span class="tok-bp">True</span></code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS</span> <span class="tok-o">=</span> <span class="tok-bp">True</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -532,7 +534,7 @@ default to <code>__name__</code> if no logger is specified and <code>DJANGO_REDI
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">DJANGO_REDIS_LOGGER</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;some.specified.logger&#39;</span></code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">DJANGO_REDIS_LOGGER</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;some.specified.logger&#39;</span></code></pre>
 </div>
 </div>
 </div>
@@ -554,7 +556,7 @@ as django backend contract specifies:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-bp">None</span><span class="tok-p">)</span></code></pre>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-bp">None</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 </div>
@@ -582,7 +584,7 @@ as django backend contract specifies:</p>
 <div class="listingblock">
 <div class="title">Simple search keys by pattern</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">25</span><span class="tok-p">)</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">25</span>
@@ -600,7 +602,7 @@ a new expiration timeout using the <code>persist</code> and <code>expire</code> 
 <div class="listingblock">
 <div class="title">Example using <code>persist</code> method</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">22</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">22</span><span class="tok-p">)</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">22</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">persist</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
@@ -611,7 +613,7 @@ a new expiration timeout using the <code>persist</code> and <code>expire</code> 
 <div class="listingblock">
 <div class="title">Example using expire method</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">22</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">22</span><span class="tok-p">)</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">expire</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">5</span><span class="tok-p">)</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">5</span></code></pre>
@@ -627,7 +629,7 @@ interface is identical to the <code>threading.Lock</code> so you can use it as r
 <div class="listingblock">
 <div class="title">Example allocating a lock using python context managers facilities.</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-k">with</span> <span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">lock</span><span class="tok-p">(</span><span class="tok-s2">&quot;somekey&quot;</span><span class="tok-p">):</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-k">with</span> <span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">lock</span><span class="tok-p">(</span><span class="tok-s2">&quot;somekey&quot;</span><span class="tok-p">):</span>
     <span class="tok-n">do_some_thing</span><span class="tok-p">()</span></code></pre>
 </div>
 </div>
@@ -641,7 +643,7 @@ using glob patterns.</p>
 <div class="listingblock">
 <div class="title">Simple search keys by pattern</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">[&quot;foo_1&quot;, &quot;foo_2&quot;]</span></code></pre>
 </div>
@@ -655,7 +657,7 @@ you can then iterate over efficiently.</p>
 <div class="listingblock">
 <div class="title">Search using server side cursors</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">iter_keys</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">&lt;generator object algo at 0x7ffa9c2713a8&gt;</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-nb">next</span><span class="tok-p">(</span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">iter_keys</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">))</span>
@@ -669,7 +671,7 @@ as the <code>keys</code> function and returns the number of deleted keys.</p>
 <div class="listingblock">
 <div class="title">Example use of delete_pattern</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">delete_pattern</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -686,7 +688,7 @@ as the <code>keys</code> function and returns the number of deleted keys.</p>
 <div class="listingblock">
 <div class="title">Example:</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value1&quot;</span><span class="tok-p">,</span> <span class="tok-n">nx</span><span class="tok-o">=</span><span class="tok-bp">True</span><span class="tok-p">)</span>
 <span class="tok-go">True</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value2&quot;</span><span class="tok-p">,</span> <span class="tok-n">nx</span><span class="tok-o">=</span><span class="tok-bp">True</span><span class="tok-p">)</span>
@@ -710,7 +712,7 @@ reusing the cache connection string: <code>get_redis_connection(alias)</code>.</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="pycon"><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">con</span> <span class="tok-o">=</span> <span class="tok-n">get_redis_connection</span><span class="tok-p">(</span><span class="tok-s2">&quot;default&quot;</span><span class="tok-p">)</span>
 <span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">con</span>
 <span class="tok-go">&lt;redis.client.StrictRedis object at 0x2dc4510&gt;</span></code></pre>
@@ -747,7 +749,7 @@ in the pool, by setting <code>CONNECTION_POOL_KWARGS</code> in the <code>CACHES<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-o">...</span>
@@ -763,7 +765,7 @@ in the pool, by setting <code>CONNECTION_POOL_KWARGS</code> in the <code>CACHES<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">get_cache</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">get_cache</span>
 <span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
 
 <span class="tok-n">r</span> <span class="tok-o">=</span> <span class="tok-n">get_redis_connection</span><span class="tok-p">(</span><span class="tok-s2">&quot;default&quot;</span><span class="tok-p">)</span>  <span class="tok-c1"># Use the name you have defined for Redis in settings.CACHES</span>
@@ -781,7 +783,7 @@ in the pool, by setting <code>CONNECTION_POOL_KWARGS</code> in the <code>CACHES<
 <div class="listingblock">
 <div class="title"><em>myproj/mypool.py</em></div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-kn">from</span> <span class="tok-nn">redis.connection</span> <span class="tok-kn">import</span> <span class="tok-n">ConnectionPool</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">from</span> <span class="tok-nn">redis.connection</span> <span class="tok-kn">import</span> <span class="tok-n">ConnectionPool</span>
 
 <span class="tok-k">class</span> <span class="tok-nc">MyOwnPool</span><span class="tok-p">(</span><span class="tok-n">ConnectionPool</span><span class="tok-p">):</span>
     <span class="tok-c1"># Just doing nothing, only for example purpose</span>
@@ -791,7 +793,7 @@ in the pool, by setting <code>CONNECTION_POOL_KWARGS</code> in the <code>CACHES<
 <div class="listingblock">
 <div class="title"><em>settings.py</em></div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-c1"># Omitting all backend declaration boilerplate code.</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-c1"># Omitting all backend declaration boilerplate code.</span>
 
 <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;CONNECTION_POOL_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;myproj.mypool.MyOwnPool&quot;</span><span class="tok-p">,</span>
@@ -812,7 +814,7 @@ class that is specified in the global Django setting <code>DJANGO_REDIS_CONNECTI
 <div class="listingblock">
 <div class="title">Partial interface of <code>ConnectionFactory</code> class</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-c1"># Note: Using Python 3 notation for code documentation ;)</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-c1"># Note: Using Python 3 notation for code documentation ;)</span>
 
 <span class="tok-k">class</span> <span class="tok-nc">ConnectionFactory</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
     <span class="tok-k">def</span> <span class="tok-nf">get_connection_pool</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">params</span><span class="tok-p">:</span><span class="tok-nb">dict</span><span class="tok-p">):</span>
@@ -868,7 +870,7 @@ that works very well for most common task, but if you want some performance boos
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;PARSER_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis.connection.HiredisParser&quot;</span><span class="tok-p">,</span>
 <span class="tok-p">}</span></code></pre>
 </div>
@@ -892,7 +894,7 @@ with master-slave support.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
     <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
     <span class="tok-s2">&quot;redis://127.0.0.1:6378/1&quot;</span><span class="tok-p">,</span>
 <span class="tok-p">]</span></code></pre>
@@ -922,7 +924,7 @@ the default client. To use it, change your cache settings to something like this
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
@@ -962,7 +964,7 @@ additional methods for getting/setting keys.</p>
 <div class="listingblock">
 <div class="title">Example setup</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
@@ -1000,7 +1002,7 @@ also available.</p>
 <div class="listingblock">
 <div class="title">Example setup</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
@@ -1019,7 +1021,7 @@ also available.</p>
 <div class="listingblock">
 <div class="title">Example setup</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
         <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
@@ -1035,9 +1037,8 @@ also available.</p>
 <div class="sect2">
 <h3 id="_pluggable_redis_client">3.17. Pluggable redis client</h3>
 <div class="paragraph">
-<p><em>django_redis</em> uses the Redis client <code>redis.client.StrictClient</code> by default.
-It is possible to use an alternative client, for example <code>fakeredis</code> for
-testing purpose (see <a href="#_testing_with_django_redis">Testing with django-redis</a>).</p>
+<p><em>django_redis</em> uses the Redis client <code>redis.client.StrictClient</code> by default. It
+is possible to use an alternative client.</p>
 </div>
 <div class="paragraph">
 <p>You can customize the client used by setting <code>REDIS_CLIENT_CLASS</code> in the
@@ -1047,7 +1048,7 @@ by setting <code>REDIS_CLIENT_KWARGS</code>.</p>
 <div class="listingblock">
 <div class="title">Example setup</div>
 <div class="content">
-<pre class="pygments highlight"><code data-lang="python"><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
     <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
         <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
             <span class="tok-s2">&quot;REDIS_CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;my.module.ClientClass&quot;</span><span class="tok-p">,</span>
@@ -1065,7 +1066,7 @@ by setting <code>REDIS_CLIENT_KWARGS</code>.</p>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="text">Copyright (c) 2011-2015 Andrey Antukh &lt;niwi@niwi.nz&gt;
+<pre class="pygments highlight"><code data-lang="text"><span></span>Copyright (c) 2011-2015 Andrey Antukh &lt;niwi@niwi.nz&gt;
 Copyright (c) 2011 Sean Bleier
 
 All rights reserved.
@@ -1098,7 +1099,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-25 14:31:14 CEST
+Last updated 2018-03-01 11:31:55 CET
 </div>
 </div>
 </body>
